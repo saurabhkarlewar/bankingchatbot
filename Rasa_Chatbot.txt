@@ -1,0 +1,29 @@
+Rasa works on python version <= 3.6
+conda create -n rasa python=3.6
+conda activate rasa
+
+python -m pip install rasa
+python -m spacy download en
+
+python -m rasa init --no-prompt
+
+### Update customs intents specific to your bot 
+Include intents in nlu.md file
+Modify config.yml file
+
+### Retrrain the models to include the new intents in Bot learning
+python -m rasa train nlu
+
+###Test the model
+python -m rasa shell nlu
+
+### Define stories or a conversation path
+Include stories in stories.md file
+
+### Provide domain details
+Provide domain details like intents and entities from nlu.md file and actions from stories.md file.
+For the actions, provide a predefined tempates which bot can use to respond back to user.
+
+### Define custom actions
+Any custom actions like integrating with external API's, quering from database is defined in actions.py file
+actions.py file contains custom class for each action. Each class has 2 methods name and run
