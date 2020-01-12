@@ -1,0 +1,171 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - balance_check
+  - thankyou
+  - inform
+  - apply_for_new_product
+  - stop
+  - chitchat
+  - transaction_details
+
+actions:
+- utter_greet
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- utter_ask_source_account
+- utter_how_can_i_help
+- action_balance_search
+- utter_ask_phoneno
+- utter_ask_dateofbirth
+- utter_validate_user
+- utter_product_application_init
+- utter_slots_values
+- utter_chitchat
+- utter_ask_continue
+- utter_noworries
+- action_query_knowledge_base
+
+entities:
+- source_account
+- product
+- phoneno
+- dob
+- applicant_name
+- applicant_dob
+- applicant_phoneno
+- applicant_address
+- month
+
+slots:
+    source_account:
+        type: categorical
+        values:
+        - savings
+        - current
+        auto_fill: False
+    phoneno:
+        type: text
+        auto_fill: False
+    dob:
+        type: text
+        auto_fill: False
+    product:
+        type: categorical
+        values:
+        - credit
+        - forex
+        - debit
+        - atm
+        auto_fill: False
+    applicant_name:
+      type: unfeaturized
+      auto_fill: false
+    applicant_dob:
+      type: unfeaturized
+      auto_fill: false
+    applicant_phoneno:
+      type: unfeaturized
+      auto_fill: false
+    applicant_address:
+      type: unfeaturized
+      auto_fill: false
+
+templates:
+  utter_greet:
+  - text: "Hey!"
+  - text: "Hi there!"
+  - text: "Hello!"
+  - text: "Hey! Nice to meet you"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_goodbye:
+  - text: "Bye"
+  - text: "ByeBye"
+  - text: "See you"
+  - text: "Can't wait to talk to you."
+
+  utter_iamabot:
+  - text: "I am a HBSC banking bot. How can I help you today?"
+  - text: "I am a HBSC banking bot. How can i help?"
+  - text: "I am a HBSC banking bot developed by RBWM team. How can I help you?"
+  - text: "I can help you with account blance, card blocking and resetting password"
+
+  utter_ask_source_account:
+  - text: "Are you looking for Savings or Current account balance?"
+  - text: "Savings or Current."
+
+  utter_how_can_i_help:
+  - text: "How can I help you today?"
+  - text: "Is there anything that I can help you with."
+  - text: "I am here to help you."
+
+  utter_happy:
+  - text: "I am happy that I was able to help you."
+  - text: "My pleasure."
+  - text: "Happy to help."
+  - text: "Is there anything i can help you with."
+
+  utter_ask_phoneno:
+  - text: "Please help me with your registered mobile number."
+  - text: "Please share your registered mobile number."
+  - text: "Can you please provide you registered mobile number."
+  - text: "Can you please help me with your 10 digit registered mobile number?"
+  - text: "Please provide your 10 digit registered mobile number."
+  - text: "Can you provide your 10 digit registered mobile no please?"
+
+  utter_ask_dateofbirth:
+  - text: "Can you please help me with your date of birth in mmddyyyy format?"
+  - text: "Please provide your date of birth in mmddyyyy format."
+  - text: "Can you provide your date of birth in mmddyyyy format please?"
+  
+  utter_validate_user:
+  - text: "Sure. Please help me with your few details for validation"
+  - text: "Sure. I need to validate first before proceeding."
+  - text: "Sure. Please asnwer few follow up questions to validate yourself."
+
+  utter_product_application_init:
+  - text: "Sure. Please fill in the form to apply for new product"
+  - text: "Please fill in the form for new product"
+  - text: "Please fill in the application form"
+
+  utter_slots_values:
+    - text: "I am going to apply for a new {product} on your behalf using the following parameters:\n
+             - product: {product}\n
+             - name: {applicant_name}\n
+             - date of birth: {applicant_dob}\n
+             - phone no: {applicant_phoneno}\n
+             - address: {applicant_address}"
+  
+  utter_wrong_product:
+    - text: "Please choose between Credit Card/ Debit or ATM Card/ Forex Card."
+
+  utter_wrong_phone_no:
+    - text: "Please enter correct phone number."    
+
+  utter_submit:
+    - text: "All done!"
+
+  utter_chitchat:
+    - text: "chitchat"
+  
+  utter_ask_continue:
+    - text: "do you want to continue?"
+
+  utter_noworries:
+    - text: "you are welcome :)"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+forms:
+  - new_product_application_form
